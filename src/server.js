@@ -21,8 +21,8 @@ function renderState(req, res, next) {
 }
 
 app
-  .use("/assets", express.static(path.resolve(__dirname + "/../assets")))
-  .use(renderState)
-  .listen(port, function () {
-    console.log("Server listening on port " + port);
-  });
+    .use("/assets", express.static(path.resolve(__dirname + "/../assets")))
+    .use(renderState)
+    .listen(port, function () {
+        console.log("Server listening on port " + port);
+    });
