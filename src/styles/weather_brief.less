@@ -1,6 +1,57 @@
 .weather-brief {
 
-    &-title {
+    &__title {
+        font-size: 16px;
+        margin: 16px 20px 4px;
 
+        &-today {
+            color: red;
+        }
+    }
+
+    &__parts {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    &__part {
+        width: 100%;
+        height: 40px;
+        padding: 0 20px;
+        box-sizing: padding-box;
+        line-height: 40px;
+        font-size: 14px;
+        text-align: left;
+
+        &-type {
+            display: inline-block;
+            width: 72px;
+            float: left;
+            color: rgba(0,0,0,.73);
+        }
+
+        &-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            float: left;
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-position: center left;
+            background-size: 20px 20px;
+        }
+
+        &-temp-min {
+            display: inline-block;
+            width: 40px;
+            float: left;
+        }
+
+        &-temp-max {
+            display: inline-block;
+            float: left;
+        }
     }
 }

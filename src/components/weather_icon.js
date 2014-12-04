@@ -10,9 +10,8 @@ var WeatherIcon = React.createClass({
 
     render: function () {
         return (
-            <img
-                src={"http://ekb.shri14.ru/icons/" + this.props.icon + ".svg"}
-                className={this.props.className}/>
+            <div className={this.props.className}
+                style={{"background-image": "url(http://ekb.shri14.ru/icons/" + this.props.icon + ".svg)"}} />
         );
     }
 });

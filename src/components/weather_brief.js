@@ -36,15 +36,15 @@ var WeatherBriefDay = React.createClass({
             var temp = part.temp_min || part.temp;
 
             return (
-                <li className="weather_brief__part" style={{"background-color": temp2color(temp)}}>
-                    <div className="weather_brief-part__type">
+                <li className="weather-brief__part" style={{"background-color": temp2color(temp)}}>
+                    <div className="weather-brief__part-type">
                         {dateutils.getPartTranslation(part.type)}
                     </div>
-                    <WeatherIcon className="weather_brief-part__icon" icon={part.weather_icon} />
-                    <div className="weather-brief-part__temp-min">
+                    <WeatherIcon className="weather-brief__part-icon" icon={part.weather_icon} />
+                    <div className="weather-brief__part-temp-min">
                         {temp}
                     </div>
-                    <div className="weather-brief-part__temp-max">
+                    <div className="weather-brief__part-temp-max">
                         {part.temp_max || null}
                     </div>
                 </li>
