@@ -1,4 +1,6 @@
 var React = require('react');
+var Header = require('./components/header');
+var Weather = require('./components/weather');
 
 var Application = React.createClass({
     render: function () {
@@ -11,7 +13,8 @@ var Application = React.createClass({
                     <script src="/assets/bundle.js"/>
                 </head>
                 <body>
-                    Hello weather
+                    <Header />
+                    <Weather />
                 </body>
             </html>
         );

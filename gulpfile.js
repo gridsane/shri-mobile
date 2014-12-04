@@ -11,7 +11,7 @@ var isProduction = -1 !== process.argv.indexOf('--prod');
 gulp.task('browserify', function () {
     var stream = gulp.src('src/client.js')
         .pipe(browserify({
-            transform: ['reactify'],
+            transform: ['reactify', 'brfs'],
             debug: true,
         }))
         .on('error', function () { console.log(arguments); });

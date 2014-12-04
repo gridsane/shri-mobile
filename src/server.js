@@ -20,8 +20,6 @@ function renderState(req, res, next) {
     });
 }
 
-console.log(path.resolve(__dirname + "/../assets"));
-
 app
   .use("/assets", express.static(path.resolve(__dirname + "/../assets")))
   .use(renderState)

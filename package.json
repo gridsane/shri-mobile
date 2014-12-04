@@ -17,6 +17,7 @@
     "react": "~0.12.1",
     "react-async": "~2.0.1",
     "fibers": "~1.0.2",
-    "reactify": "~0.17.1"
+    "reactify": "~0.17.1",
+    "brfs": "~1.2.0"
   }
 }
