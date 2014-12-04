@@ -1,5 +1,6 @@
 var React = require('react');
 var Header = require('./components/header');
+var Search = require('./components/search');
 var Weather = require('./components/weather');
 
 var Application = React.createClass({
@@ -14,6 +15,7 @@ var Application = React.createClass({
                 </head>
                 <body>
                     <Header />
+                    <Search />
                     <Weather />
                 </body>
             </html>
