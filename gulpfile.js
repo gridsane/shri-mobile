@@ -49,11 +49,14 @@ gulp.task('default', ['build', 'server'], function () {
     gulp.watch(['src/**/*.js'], ['browserify']);
     gulp.watch(['src/**/*.less'], ['less']);
 
-    gulp.watch(['assets/**/*'], function (files) {
+    gulp.watch(['assets/**/*.css'], function (files) {
         livereload.changed(files);
     });
 
-    gulp.watch(['src/server.js'], function () {
+    // since we are render js on the server, when client code changed
+    // we need to restart the server too, to not getting invariant errors
+    // in browser
+    gulp.watch(['assets/**/*.js', 'src/server.js'], function () {
         server.changed(function (error) {
             if (!error) {
                 livereload.changed();
