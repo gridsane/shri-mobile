@@ -6,7 +6,7 @@ var Footer = React.createClass({
       <div className="footer">
         <span className="footer__copyright">
             &copy; 2008-{new Date().getFullYear()}
-            &nbsp;&laquo;<a href="http://yandex.ru">
+            &nbsp;&nbsp;ООО&nbsp;&laquo;<a href="http://yandex.ru">
                 Яндекс
             </a>&raquo;
         </span>
