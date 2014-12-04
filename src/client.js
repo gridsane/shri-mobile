@@ -2,6 +2,7 @@ var React = require('react');
 var Header = require('./components/header');
 var Search = require('./components/search');
 var Weather = require('./components/weather');
+var Footer = require('./components/footer');
 
 var Application = React.createClass({
     render: function () {
@@ -17,6 +18,7 @@ var Application = React.createClass({
                     <Header />
                     <Search />
                     <Weather />
+                    <Footer />
                 </body>
             </html>
         );
