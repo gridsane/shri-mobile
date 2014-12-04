@@ -9,6 +9,62 @@
         }
     }
 
+    &__fact {
+        padding: 12px 20px;
+        overflow: hidden;
+
+        &-temp {
+            display: inline-block;
+            font-size: 64px;
+            vertical-align: top;
+        }
+
+        &-indicators {
+            display: inline-block;
+            margin: 12px 0 0 8px;
+            min-width: 142px;
+            color: rgba(0,0,0,.60);
+            vertical-align: top;
+
+            &-name {
+                margin-right: 4px;
+                float: left;
+                clear: left;
+                display: imline;
+
+                &::after {
+                    content: ':';
+                }
+            }
+
+            &-value {
+                margin: 0;
+            }
+        }
+
+        &-weather {
+            overflow: hidden;
+        }
+
+        &-icon {
+            display: inline-block;
+            width: 72px;
+            height: 64px;
+            clear: both;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            background-size: 56px 56px;
+            background-position: center center;
+        }
+
+        &-desc {
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+            font-size: 16px;
+        }
+    }
+
     &__parts {
         margin: 0;
         padding: 0;
@@ -28,7 +84,7 @@
             display: inline-block;
             width: 72px;
             float: left;
-            color: rgba(0,0,0,.73);
+            color: rgba(0,0,0,.60);
         }
 
         &-icon {

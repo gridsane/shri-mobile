@@ -17,6 +17,45 @@ var WeatherBriefDay = React.createClass({
             "weather-brief__title-today": !!this.props.fact,
         });
 
+        var fact = null;
+        if (this.props.fact) {
+            fact = (
+                <div className="weather-brief__fact" style={{"background-color": temp2color(this.props.fact.temp)}}>
+                    <div className="weather-brief__fact-temp">
+                        {this.props.fact.temp}&deg;C
+                    </div>
+                    <dl className="weather-brief__fact-indicators">
+                        <dt className="weather-brief__fact-indicators-name">
+                            Ветер
+                        </dt>
+                        <dd className="weather-brief__fact-indicators-value">
+                            {this.props.fact.wind_speed} м/с
+                        </dd>
+
+                        <dt className="weather-brief__fact-indicators-name">
+                            Влажность
+                        </dt>
+                        <dd className="weather-brief__fact-indicators-value">
+                            {this.props.fact.humidity}%
+                        </dd>
+
+                        <dt className="weather-brief__fact-indicators-name">
+                            Давление
+                        </dt>
+                        <dd className="weather-brief__fact-indicators-value">
+                            {this.props.fact.pressure} мм рт. ст.
+                        </dd>
+                    </dl>
+                    <div className="weather-brief__fact-weather">
+                        <WeatherIcon className="weather-brief__fact-icon" icon={this.props.fact.weather_icon} />
+                        <div className="weather-brief__fact-desc">
+                            {this.props.fact.weather}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         var nowPart = dateutils.getNowPart();
         var isNowPartDrawed = !!!this.props.fact;
         var parts = this.props.forecast.parts.map(function (part) {
@@ -56,6 +95,7 @@ var WeatherBriefDay = React.createClass({
                 <div className={titleClasses}>
                     {dateutils.getTitle(new Date(this.props.forecast.date))}
                 </div>
+                {fact}
                 <ul className="weather-brief__parts">
                     {parts}
                 </ul>
@@ -116,7 +156,7 @@ var WeatherBrief = React.createClass({
             type: "morning",
             temp: -7,
             temp_min: -7,
-            temp_max: -6,
+            temp_max: 33,
             weather: "облачно с прояснениями",
             weather_code: "cloudy",
             weather_icon: "bkn_d",
@@ -159,7 +199,7 @@ var WeatherBrief = React.createClass({
             },
             {
             type: "night",
-            temp: -2,
+            temp: 22,
             temp_min: -3,
             temp_max: -2,
             weather: "облачно с прояснениями",
@@ -366,9 +406,9 @@ var WeatherBrief = React.createClass({
             },
             {
             type: "evening",
-            temp: -2,
-            temp_min: -2,
-            temp_max: -1,
+            temp: 33,
+            temp_min: 33,
+            temp_max: 33,
             weather: "облачно",
             weather_code: "overcast",
             weather_icon: "ovc",
@@ -381,9 +421,9 @@ var WeatherBrief = React.createClass({
             },
             {
             type: "night",
-            temp: -3,
-            temp_min: -4,
-            temp_max: -2,
+            temp: 33,
+            temp_min: 33,
+            temp_max: 33,
             weather: "облачно",
             weather_code: "overcast",
             weather_icon: "ovc",
