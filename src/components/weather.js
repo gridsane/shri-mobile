@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react/addons');
+var Brief = require('./weather_brief');
 
 var Weather = React.createClass({
     render: function () {
@@ -8,6 +9,9 @@ var Weather = React.createClass({
                     <a href="#" className="weather__tabs-button weather__tabs-button-active">Кратко</a>
                     <a href="#" className="weather__tabs-button">Подробно</a>
                     <a href="#" className="weather__tabs-button">Наглядно</a>
+                </div>
+                <div className="weather__pane">
+                    <Brief />
                 </div>
             </div>
         );
