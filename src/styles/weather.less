@@ -1,0 +1,38 @@
+.weather {
+    &__tabs {
+        display: table;
+        table-layout: fixed;
+        margin: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 100%;
+
+        &-button {
+            display: table-cell;
+            height: 32px;
+            font-size: 14px;
+            line-height: 32px;
+            text-align: center;
+            .button();
+
+            &-active {
+                background-color: #ffebae;
+                border-color: #ccbe81;
+            }
+
+            &:first-child {
+                border-right: none;
+                .button-left-radius()
+            }
+
+            &:last-child {
+                border-left: none;
+                .button-right-radius();
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
