@@ -6,8 +6,8 @@ var Header = React.createClass({
   render: function () {
     return (
       <div className="header">
-        <img className="header-logo" src={"data:image/svg+xml;base64," + logoImage}/>
-        <div className="header-appname">Погода</div>
+        <img className="header__logo" src={"data:image/svg+xml;base64," + logoImage}/>
+        <div className="header__appname">Погода</div>
       </div>
     );
   }

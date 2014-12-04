@@ -4,8 +4,8 @@ var Search = React.createClass({
   render: function () {
     return (
       <div className="search">
-        <input className="search-input" type="text" />
-        <button className="search-button">Найти</button>
+        <input className="search__input" type="text" />
+        <button className="search__button">Найти</button>
       </div>
     );
   }
