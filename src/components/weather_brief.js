@@ -20,7 +20,7 @@ var WeatherBriefDay = React.createClass({
         var fact = null;
         if (this.props.fact) {
             fact = (
-                <div className="weather-brief__fact" style={{"background-color": temp2color(this.props.fact.temp)}}>
+                <div className="weather-brief__fact" style={{backgroundColor: temp2color(this.props.fact.temp)}}>
                     <div className="weather-brief__fact-temp">
                         {this.props.fact.temp}&deg;C
                     </div>
@@ -75,7 +75,7 @@ var WeatherBriefDay = React.createClass({
             var temp = part.temp_min || part.temp;
 
             return (
-                <li className="weather-brief__part" style={{"background-color": temp2color(temp)}}>
+                <li className="weather-brief__part" style={{backgroundColor: temp2color(temp)}}>
                     <div className="weather-brief__part-type">
                         {dateutils.getPartTranslation(part.type)}
                     </div>
