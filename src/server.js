@@ -10,15 +10,22 @@ require('node-jsx').install();
 var Router = require('react-router');
 var routes = require('./client');
 
-function renderState(req, res, next) {
+app.get('/', function (req, res) {
+    res.redirect('/213/brief');
+});
+
+app.get('/:locality', function (req, res) {
+    res.redirect(req.params.locality + '/brief');
+});
+
+app.get(/^\/([\d]+)\/(brief|details|visual)$/, function (req, res, next) {
     Router.run(routes, req.path, function (Handler) {
         ReactAsync.renderToStringAsync(Handler(), function (err, markup) {
             res.send('<!DOCTYPE html>\n' + markup);
         });
     });
-}
+});
 
-// http://ekb.shri14.ru/icons/ovc.svg
 app.get('/icons/:icon.svg', function (req, res) {
     superagent.get(
         'http://ekb.shri14.ru/icons/' + req.params.icon + '.svg',
@@ -35,7 +42,6 @@ app.get('/icons/:icon.svg', function (req, res) {
 
 app
     .use("/assets", express.static(path.resolve(__dirname + "/../assets")))
-    .use(renderState)
     .listen(port, function () {
         console.log("Server listening on port " + port);
     });
