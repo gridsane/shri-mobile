@@ -4,7 +4,10 @@
   "author": "gridsane <gridsane@gmail.com>",
   "license": "BSD-2-Clause",
   "dependencies": {
+    "brfs": "~1.2.0",
+    "datef": "0.0.7",
     "express": "~4.10.4",
+    "fibers": "~1.0.2",
     "gulp": "~3.8.10",
     "gulp-browserify": "~0.5.0",
     "gulp-develop-server": "~0.2.5",
@@ -16,10 +19,8 @@
     "node-jsx": "~0.12.4",
     "react": "~0.12.1",
     "react-async": "~2.0.1",
-    "fibers": "~1.0.2",
+    "react-router": "^0.11.4",
     "reactify": "~0.17.1",
-    "brfs": "~1.2.0",
-    "datef": "0.0.7",
     "superagent": "~0.21.0"
   }
 }

@@ -7,17 +7,14 @@ var app = express();
 var port = process.env.PORT || 5000;
 
 require('node-jsx').install();
-var Application = require('./client');
+var Router = require('react-router');
+var routes = require('./client');
 
 function renderState(req, res, next) {
-    var client = React.createElement(Application, {path: req.url});
-
-    ReactAsync.renderToStringAsync(client, function (err, markup) {
-        if (err) {
-            next(err);
-        }
-
-        res.send('<!DOCTYPE html>\n' + markup);
+    Router.run(routes, req.path, function (Handler) {
+        ReactAsync.renderToStringAsync(Handler(), function (err, markup) {
+            res.send('<!DOCTYPE html>\n' + markup);
+        });
     });
 }
 

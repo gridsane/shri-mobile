@@ -1,41 +1,29 @@
 var React = require('react');
-var Header = require('./components/header');
-var Search = require('./components/search');
+var Router = require('react-router');
+var Route = Router.Route;
+var Redirect = Router.Redirect;
+var Application = require('./components/application');
 var Weather = require('./components/weather');
-var Footer = require('./components/footer');
+var WeatherBrief = require('./components/weather_brief');
+var WeatherDetail = require('./components/weather_detail');
+var WeatherVisual = require('./components/weather_visual');
 
-var Application = React.createClass({
-    getDefaultProps: function () {
-        return {
-            locality: 213,
-            pane: 'brief'
-        };
-    },
-
-    render: function () {
-        return (
-            <html>
-                <head>
-                    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-                    <title>Yandex Weather</title>
-                    <link rel="stylesheet" href="/assets/main.css"/>
-                    <script src="/assets/bundle.js"/>
-                </head>
-                <body>
-                    <Header />
-                    <Search />
-                    <Weather locality={this.props.locality} pane={this.props.pane} />
-                    <Footer />
-                </body>
-            </html>
-        );
-    }
-});
+var routes = (
+    <Route handler={Application} path="/:locality">
+        <Route handler={Weather}>
+            <Route name="brief" path="brief" handler={WeatherBrief}/>
+            <Route name="visual" path="visual" handler={WeatherVisual}/>
+            <Route name="detail" path="detail" handler={WeatherDetail}/>
+        </Route>
+    </Route>
+);
 
 if (typeof window !== 'undefined') {
-    window.onload = function() {
-        React.render(React.createElement(Application), document);
+    window.onload = function () {
+        Router.run(routes, Router.HistoryLocation, function (Handler) {
+            React.render(<Handler/>, document);
+        });
     }
 }
 
-module.exports = Application;
+module.exports = routes;

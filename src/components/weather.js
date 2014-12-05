@@ -1,5 +1,8 @@
 var React = require('react/addons');
 var ReactAsync = require('react-async');
+var Router = require('react-router');
+var RouteHandler = Router.RouteHandler;
+var Link = Router.Link;
 var superagent = require('superagent');
 var Brief = require('./weather_brief');
 
@@ -30,16 +33,28 @@ var Weather = React.createClass({
         }
     },
 
+    renderTabLink: function (pane, text) {
+        return (
+            <Link
+                className="weather__tabs-button"
+                activeClassName="weather__tabs-button-active"
+                to={pane}
+                params={{locality: this.props.locality}}>
+                {text}
+            </Link>
+        );
+    },
+
     render: function () {
         return (
             <div className="weather">
                 <div className="weather__tabs">
-                    <a href="#" className="weather__tabs-button weather__tabs-button-active">Кратко</a>
-                    <a href="#" className="weather__tabs-button">Подробно</a>
-                    <a href="#" className="weather__tabs-button">Наглядно</a>
+                    {this.renderTabLink('brief', 'Кратко')}
+                    {this.renderTabLink('detail', 'Подробно')}
+                    {this.renderTabLink('visual', 'Наглядно')}
                 </div>
                 <div className="weather__pane">
-                    <Brief {...this.state} />
+                    <RouteHandler {...this.state} />
                 </div>
             </div>
         );
