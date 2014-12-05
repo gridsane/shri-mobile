@@ -1,19 +1,14 @@
 var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
+var Router = require('react-router');
+var RouteHandler = Router.RouteHandler;
 var Header = require('./header');
 var Search = require('./search');
 var Footer = require('./footer');
 
 var Application = React.createClass({
-    getDefaultProps: function () {
-        return {
-            locality: 213,
-            pane: 'brief',
-            history: true
-        };
-    },
+    mixins: [Router.State],
 
-    render: function (locality) {
+    render: function () {
         return (
             <html>
                 <head>
@@ -25,7 +20,7 @@ var Application = React.createClass({
                 <body>
                     <Header />
                     <Search />
-                    <RouteHandler locality={this.props.locality} />
+                    <RouteHandler locality={this.getParams().locality} />
                     <Footer />
                 </body>
             </html>

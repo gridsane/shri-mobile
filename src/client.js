@@ -9,7 +9,7 @@ var WeatherDetail = require('./components/weather_detail');
 var WeatherVisual = require('./components/weather_visual');
 
 var routes = (
-    <Route handler={Application} path="/:locality">
+    <Route path="/:locality" handler={Application}>
         <Route handler={Weather}>
             <Route name="brief" path="brief" handler={WeatherBrief}/>
             <Route name="visual" path="visual" handler={WeatherVisual}/>

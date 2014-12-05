@@ -12,8 +12,8 @@ function getWeatherInfo(locality, callback) {
         function(err, res) {
             callback(err, res ? res.body : null);
         }
-    )
-}
+    );
+};
 
 var Weather = React.createClass({
     mixins: [ReactAsync.Mixin],

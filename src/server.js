@@ -10,20 +10,40 @@ require('node-jsx').install();
 var Router = require('react-router');
 var routes = require('./client');
 
-app.get('/', function (req, res) {
-    res.redirect('/213/brief');
-});
-
-app.get('/:locality', function (req, res) {
-    res.redirect(req.params.locality + '/brief');
-});
-
-app.get(/^\/([\d]+)\/(brief|details|visual)$/, function (req, res, next) {
+app.get(/^\/([\d]+)\/(brief|detail|visual)$/, function (req, res, next) {
     Router.run(routes, req.path, function (Handler) {
         ReactAsync.renderToStringAsync(Handler(), function (err, markup) {
             res.send('<!DOCTYPE html>\n' + markup);
         });
     });
+});
+
+app.get('/', function (req, res) {
+    superagent.get('http://ip-api.com/json/' + req.ip)
+    .end(function (err, response) {
+        if (err || 'fail' === response.body.status) {
+            res.redirect('/213/brief');
+            return;
+        }
+
+        superagent.get(
+            'http://ekb.shri14.ru/api/geocode?coords=' + [
+                response.body.lon,
+                response.body.lat
+            ].join(','))
+        .end(function (err, geoidResponse) {
+            if (err || 200 !== geoidResponse.status) {
+                res.redirect('/213/brief');
+                return;
+            }
+
+            res.redirect('/' + geoidResponse.body.geoid + '/brief');
+        });
+    });
+});
+
+app.get(/^\/([\d]+)$/, function (req, res) {
+    res.redirect(req.params[0] + '/brief');
 });
 
 app.get('/icons/:icon.svg', function (req, res) {
