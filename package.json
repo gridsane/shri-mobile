@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "author": "gridsane <gridsane@gmail.com>",
   "license": "BSD-2-Clause",
+  "engines": {
+    "node": ">=0.10.33"
+  },
   "dependencies": {
     "express": "~4.10.4",
     "gulp": "~3.8.10",
@@ -21,5 +24,11 @@
     "brfs": "~1.2.0",
     "datef": "0.0.7",
     "superagent": "~0.21.0"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.2.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
