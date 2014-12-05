@@ -28,13 +28,25 @@ var Day = React.createClass({
                     <div className="weather-day__fact-temp">
                         {this.props.fact.temp}&deg;C
                     </div>
-                    <WeatherIndicators isBrief={this.props.isBrief} {...this.props.fact} />
+
+                    {this.props.isBrief ? <WeatherIndicators
+                        showWindDir={false}
+                        {...this.props.fact}/> : null}
+
+                    <WeatherIcon className="weather-day__fact-icon" icon={this.props.fact.weather_icon} />
                     <div className="weather-day__fact-weather">
-                        <WeatherIcon className="weather-day__fact-icon" icon={this.props.fact.weather_icon} />
                         <div className="weather-day__fact-desc">
                             {this.props.fact.weather}
                         </div>
+                        {this.props.isBrief
+                            ? null
+                            : <WeatherIndicators
+                                showWindDir={true}
+                                sunrise={this.props.forecast.sunrise}
+                                sunset={this.props.forecast.sunset}
+                                {...this.props.fact}/>}
                     </div>
+
                 </div>
             );
         }

@@ -17,7 +17,7 @@ var WeatherPart = React.createClass({
                 <div className="weather-day__part-weather">
                     {this.props.weather}
                 </div>
-                <WeatherIndicators isBrief={true} {...this.props} />
+                <WeatherIndicators showWindDir={true} {...this.props} />
             </div>
         );
     },
