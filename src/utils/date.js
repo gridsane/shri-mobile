@@ -42,22 +42,23 @@ var getTitle = function (date) {
     return datef('d MMMM, DD', date);
 };
 
+var parts = ['night', 'morning', 'day', 'evening'];
+
 var getNowPart = function () {
     // 0 - 5: night
     // 6 - 11: morning
     // 12 - 17: day
     // 18 - 23: evening
     var nowHour = new Date().getHours();
-    return ['night', 'morning', 'day', 'evening'][Math.floor(nowHour / 6)]
+    return parts[Math.floor(nowHour / 6)]
 };
 
+var isPartLessThen = function (part, compare) {
+    return parts.indexOf(part) < parts.indexOf(compare);
+}
+
 var getPartTranslation = function (type) {
-    return {
-        'night': 'Ночью',
-        'morning': 'Утром',
-        'day': 'Днем',
-        'evening': 'Вечером'
-    }[type];
+    return ['Ночью', 'Утром', 'Днем', 'Вечером'][parts.indexOf(type)];
 }
 
 module.exports = {
@@ -67,4 +68,5 @@ module.exports = {
     getTitle: getTitle,
     getNowPart: getNowPart,
     getPartTranslation: getPartTranslation,
+    isPartLessThen: isPartLessThen,
 };

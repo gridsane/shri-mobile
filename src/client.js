@@ -5,6 +5,13 @@ var Weather = require('./components/weather');
 var Footer = require('./components/footer');
 
 var Application = React.createClass({
+    getDefaultProps: function () {
+        return {
+            locality: 213,
+            pane: 'brief'
+        };
+    },
+
     render: function () {
         return (
             <html>
@@ -17,7 +24,7 @@ var Application = React.createClass({
                 <body>
                     <Header />
                     <Search />
-                    <Weather />
+                    <Weather locality={this.props.locality} pane={this.props.pane} />
                     <Footer />
                 </body>
             </html>
