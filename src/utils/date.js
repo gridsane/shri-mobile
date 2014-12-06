@@ -11,6 +11,10 @@ var zeroTime = function (date) {
     return date;
 }
 
+var toDate = function (string) {
+    return zeroTime(new Date(string));
+};
+
 var getToday = function () {
     return zeroTime(new Date());
 };
@@ -28,6 +32,10 @@ var isTomorrow = function (compare) {
     var date = zeroTime(new Date(compare.getTime()));
 
     return zeroTime(tomorrow).getTime() === date.getTime();
+};
+
+var isWeekend = function (date) {
+    return -1 !== [0, 6].indexOf(date.getDay());
 };
 
 var getTitle = function (date) {
@@ -55,11 +63,15 @@ var getNowPart = function () {
 
 var isPartLessThen = function (part, compare) {
     return parts.indexOf(part) < parts.indexOf(compare);
-}
+};
 
 var getPartTranslation = function (type) {
     return ['Ночью', 'Утром', 'Днем', 'Вечером'][parts.indexOf(type)];
-}
+};
+
+var getShortWeekday = function (date) {
+    return datef('D', date);
+};
 
 module.exports = {
     isToday: isToday,
@@ -69,4 +81,7 @@ module.exports = {
     getNowPart: getNowPart,
     getPartTranslation: getPartTranslation,
     isPartLessThen: isPartLessThen,
+    getShortWeekday: getShortWeekday,
+    toDate: toDate,
+    isWeekend: isWeekend
 };
