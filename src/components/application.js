@@ -10,7 +10,6 @@ var Application = React.createClass({
     mixins: [Router.State, Navigation],
 
     onSelect: function (option) {
-        alert(option.name);
         this.transitionTo("brief", {locality: option.geoid});
     },
 

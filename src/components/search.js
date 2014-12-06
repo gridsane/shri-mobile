@@ -81,6 +81,7 @@ var Search = React.createClass({
     },
 
     onInputFocus: function () {
+        window.scrollTo(window.scrollX, this.getDOMNode().offsetTop);
         this.setState({isDropdownVisible: true});
     },
 
@@ -97,7 +98,6 @@ var Search = React.createClass({
 
     onSelect: function (option) {
         this.onInputBlur(true);
-        // через стейт или properties
         this.refs.input.getDOMNode().value = option.name;
         this.props.onSelect(option);
     },
