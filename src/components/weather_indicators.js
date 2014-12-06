@@ -7,8 +7,30 @@ var WeatherIndicators = React.createClass({
         };
     },
 
+    getWindDirDeg: function () {
+        return {
+            "n": 0,
+            "ne": 45,
+            "e": 90,
+            "se": 135,
+            "s": 180,
+            "sw": -135,
+            "w": -90,
+            "nw": -45
+        }[this.props.wind_direction];
+    },
+
     renderWindDir: function () {
-        return (<span>{this.props.wind},&nbsp;</span>);
+        var style = {
+            transform: "rotate(" + this.getWindDirDeg() + "deg)"
+        };
+
+        return (
+            <span>
+                <div className="weather-day__indicators-wind-icon" style={style}></div>
+                &nbsp;{this.props.wind},&nbsp;
+            </span>
+        );
     },
 
     renderSuntime: function () {
