@@ -1,12 +1,18 @@
 var React = require('react');
 var Router = require('react-router');
+var Navigation = Router.Navigation;
 var RouteHandler = Router.RouteHandler;
 var Header = require('./header');
 var Search = require('./search');
 var Footer = require('./footer');
 
 var Application = React.createClass({
-    mixins: [Router.State],
+    mixins: [Router.State, Navigation],
+
+    onSelect: function (option) {
+        alert(option.name);
+        this.transitionTo("brief", {locality: option.geoid});
+    },
 
     render: function () {
         return (
@@ -19,7 +25,7 @@ var Application = React.createClass({
                 </head>
                 <body>
                     <Header />
-                    <Search />
+                    <Search onSelect={this.onSelect} />
                     <RouteHandler locality={this.getParams().locality} />
                     <Footer />
                 </body>
