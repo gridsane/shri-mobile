@@ -74,11 +74,11 @@ var WeatherVisual = React.createClass({
             count++;
         });
 
-        var days = daysForecast.map(function (forecast) {
-            return <DayColumn
-                    maxTemp={maxTemp}
-                    minTemp={minTemp}
-                    {...forecast} />;
+        var days = daysForecast.map(function (forecast, i) {
+            return <DayColumn key={i}
+                maxTemp={maxTemp}
+                minTemp={minTemp}
+                {...forecast} />;
         });
 
         return (

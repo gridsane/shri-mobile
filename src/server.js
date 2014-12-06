@@ -12,7 +12,7 @@ var routes = require('./client');
 
 app.get(/^\/([\d]+)\/(brief|detail|visual)$/, function (req, res, next) {
     Router.run(routes, req.path, function (Handler) {
-        ReactAsync.renderToStringAsync(Handler(), function (err, markup) {
+        ReactAsync.renderToStringAsync(React.createElement(Handler), function (err, markup) {
             res.send('<!DOCTYPE html>\n' + markup);
         });
     });
