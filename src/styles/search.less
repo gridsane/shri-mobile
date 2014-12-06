@@ -26,15 +26,13 @@
 
     &__cancel {
         display: none;
+        width: 24px;
+        height: 40px;
         position: absolute;
         right: 96px;
-        height: 40px;
         top: 0;
-        line-height: 40px;
-
-        &::after {
-            content: 'X';
-        }
+        background: url(/assets/search-cancel.svg) center center no-repeat;
+        background-size: 16px 16px;
 
         &-visible {
             display: block;
