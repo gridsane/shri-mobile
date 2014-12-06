@@ -1,6 +1,7 @@
 var React = require('react/addons');
 var WeatherIcon = require('./weather_icon');
 var WeatherIndicators = require('./weather_indicators');
+var WeatherFact = require('./weather_fact');
 var WeatherPart = require('./weather_part');
 var dateutils = require('../utils/date');
 var temp2color = require('../utils/temp2color');
@@ -20,37 +21,7 @@ var Day = React.createClass({
             "weather-day__title-today": !!this.props.fact,
         });
 
-        var fact = null;
         var isToday = !!this.props.fact;
-        if (isToday) {
-            fact = (
-                <div className="weather-day__fact" style={{backgroundColor: temp2color(this.props.fact.temp)}}>
-                    <div className="weather-day__fact-temp">
-                        {this.props.fact.temp}&deg;C
-                    </div>
-
-                    {this.props.isBrief ? <WeatherIndicators
-                        showWindDir={false}
-                        {...this.props.fact}/> : null}
-
-                    <WeatherIcon className="weather-day__fact-icon" icon={this.props.fact.weather_icon} />
-                    <div className="weather-day__fact-weather">
-                        <div className="weather-day__fact-desc">
-                            {this.props.fact.weather}
-                        </div>
-                        {this.props.isBrief
-                            ? null
-                            : <WeatherIndicators
-                                showWindDir={true}
-                                sunrise={this.props.forecast.sunrise}
-                                sunset={this.props.forecast.sunset}
-                                {...this.props.fact}/>}
-                    </div>
-
-                </div>
-            );
-        }
-
         var nowPart = dateutils.getNowPart();
         var parts = this.props.forecast.parts.map(function (part, i) {
             if (isToday && dateutils.isPartLessThen(part.type, nowPart)) {
@@ -65,7 +36,14 @@ var Day = React.createClass({
                 <div className={titleClasses}>
                     {dateutils.getTitle(new Date(this.props.forecast.date))}
                 </div>
-                {fact}
+
+                {isToday ? <WeatherFact
+                    fact={this.props.fact}
+                    forecast={this.props.forecast}
+                    fillBackground={true}
+                    showBriefIndicators={this.props.isBrief}
+                    showDetailIndicators={!this.props.isBrief}/> : null}
+
                 <ul className="weather-day__parts">
                     {parts}
                 </ul>
