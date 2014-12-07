@@ -3,6 +3,7 @@ var superagent = require('superagent');
 var React = require('react');
 var ReactAsync = require('react-async');
 var express = require("express");
+var compress = require("compression");
 var app = express();
 var port = process.env.PORT || 5000;
 
@@ -61,6 +62,7 @@ app.get('/icons/:icon.svg', function (req, res) {
 });
 
 app
+    .use(compress())
     .use("/assets", express.static(path.resolve(__dirname + "/../assets")))
     .listen(port, function () {
         console.log("Server listening on port " + port);
