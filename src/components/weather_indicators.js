@@ -7,27 +7,18 @@ var WeatherIndicators = React.createClass({
         };
     },
 
-    getWindDirDeg: function () {
-        return {
-            "n": 0,
-            "ne": 45,
-            "e": 90,
-            "se": 135,
-            "s": 180,
-            "sw": -135,
-            "w": -90,
-            "nw": -45
-        }[this.props.wind_direction];
-    },
-
     renderWindDir: function () {
-        var style = {
-            transform: "rotate(" + this.getWindDirDeg() + "deg)"
+        var windClasses = {
+            "weather-day__indicators-wind-icon": true,
         };
+
+        windClasses["weather-day__indicators-wind-icon-" + this.props.wind_direction] = true;
+
+        var windClassSet = React.addons.classSet(windClasses);
 
         return (
             <span>
-                <div className="weather-day__indicators-wind-icon" style={style}></div>
+                <div className={windClassSet}></div>
                 &nbsp;{this.props.wind},&nbsp;
             </span>
         );
