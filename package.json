@@ -24,5 +24,9 @@
     "react-router": "^0.11.4",
     "reactify": "~0.17.1",
     "superagent": "~0.21.0"
+  },
+  "main": "src/server.js",
+  "scripts": {
+    "postinstall": "gulp build --prod"
   }
 }
