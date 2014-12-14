@@ -4,7 +4,6 @@ var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 var Link = Router.Link;
 var superagent = require('superagent');
-var Brief = require('./weather_brief');
 
 function getWeatherInfo(locality, callback) {
     superagent.get(
@@ -18,12 +17,18 @@ function getWeatherInfo(locality, callback) {
 var Weather = React.createClass({
     mixins: [ReactAsync.Mixin],
 
+    getDefaultProps: function () {
+        return {
+            locality: null
+        };
+    },
+
     getInitialStateAsync: function(callback) {
         getWeatherInfo(this.props.locality, callback);
     },
 
     componentWillReceiveProps: function(nextProps) {
-        if (this.props.locality !== nextProps.locality) {
+        if (this.props.locality !== nextProps.locality && null !== nextProps.locality) {
             getWeatherInfo(nextProps.locality, function(err, info) {
                 if (err) {
                     throw err;
